@@ -1,6 +1,6 @@
 package hudson.plugins.perforce;
 
-import hudson.plugins.perforce.utils.DepotType;
+import hudson.plugins.perforce.config.DepotType;
 import hudson.model.FreeStyleProject;
 import hudson.model.Hudson;
 import hudson.plugins.perforce.PerforceToolInstallation.DescriptorImpl;

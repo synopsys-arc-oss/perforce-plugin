@@ -1,6 +1,6 @@
 package hudson.plugins.perforce;
 
-import hudson.plugins.perforce.utils.DepotType;
+import hudson.plugins.perforce.config.DepotType;
 import com.tek42.perforce.Depot;
 import com.tek42.perforce.PerforceException;
 import com.tek42.perforce.model.Changelist;
@@ -58,6 +58,7 @@ import java.io.Serializable;
 import java.io.StringWriter;
 import java.net.InetAddress;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -279,7 +280,13 @@ public class PerforceSCM extends SCM {
     private String p4Charset = null;
     private String p4CommandCharset = null;
 
-    // Plugin constructor, (only?) used when a job configuration is saved
+    /**
+     * SCM constructor, (only?) used when a job configuration is saved.
+     * This constructor uses data classes from {@link hudson.plugins.perforce.config}
+     * to allow proper handling of hierarchical data in Stapler. In the current 
+     * state, these classes are not being used outside this constructor.
+     */
+    // TODO: move data to configuration classes during the refactoring
     @DataBoundConstructor
     public PerforceSCM(
             String p4User,
@@ -1816,6 +1823,13 @@ public class PerforceSCM extends SCM {
         @Override
         public SCM newInstance(StaplerRequest req, JSONObject formData) throws FormException {
             return (PerforceSCM)super.newInstance(req, formData);
+        }
+        
+        /**Generates a random key for p4.config.instanceID*/
+        private static final AtomicLong P4_INSTANCE_COUNTER = new AtomicLong();
+        public String generateP4InstanceID() {
+            // There's no problem even if the counter reaches overflow 
+            return Long.toString(P4_INSTANCE_COUNTER.incrementAndGet());
         }
 
         /**

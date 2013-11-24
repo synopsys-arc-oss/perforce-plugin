@@ -26,8 +26,9 @@ package hudson.plugins.perforce.config;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- *
+ * Defines masking options for {@link PerforceSCM}.
  * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * @since TODO: define a version
  */
 public class MaskViewConfig {
     String viewMask;

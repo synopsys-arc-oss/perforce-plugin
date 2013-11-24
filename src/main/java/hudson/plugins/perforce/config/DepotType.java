@@ -21,16 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package hudson.plugins.perforce.utils;
+package hudson.plugins.perforce.config;
 
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- * Provides databound-transfer of depot type parameters for PerforceSCM.
+ * Provides databound-transfer of depot type parameters for ${@link PerforceSCM}.
  * Class is developed in order to resolve <a href="https://issues.jenkins-ci.org/browse/JENKINS-18583">JENKINS-18583 issue</a>
  * @see PerforceSCMceSCM
  * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
- * @since 1.4.0
+ * @since TODO: define a version
  */
 public class DepotType {
     public static final String USE_P4STREAM_MARKER="stream";

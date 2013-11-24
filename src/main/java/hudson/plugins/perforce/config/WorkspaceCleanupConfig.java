@@ -23,11 +23,13 @@
  */
 package hudson.plugins.perforce.config;
 
+import hudson.plugins.perforce.PerforceSCM;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- *
+ * Defines workspace cleanup options for {@link PerforceSCM}.
  * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * @since TODO: define a version
  */
 public class WorkspaceCleanupConfig {
     CleanTypeConfig cleanType;
